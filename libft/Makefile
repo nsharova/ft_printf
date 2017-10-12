@@ -6,7 +6,7 @@
 #    By: nsharova <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/24 15:22:42 by nsharova          #+#    #+#              #
-#    Updated: 2017/02/16 22:28:26 by nsharova         ###   ########.fr        #
+#    Updated: 2017/10/11 01:01:29 by nsharova         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,15 +79,14 @@ CFLAGS = -c -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(CFLAGS) $(SRC) -I  libft.h
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 %.o: ./%.c
-	@gcc -o $@ -c $< -I ./ 
+	gcc $(CFLAGS) -o $@ -c $<
 clean:
-	@rm -f $(OBJ)
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
