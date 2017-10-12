@@ -26,7 +26,7 @@ int     ft_if_percent(va_list *args, const char **fm, t_print **list, size_t *re
     {
         write(1,"%", 1);
         (*ret)++;
-        (*fm)++;
+    //    (*fm)++;
     }
     else
     {
