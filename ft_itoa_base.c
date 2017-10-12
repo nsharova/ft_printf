@@ -16,7 +16,7 @@ void		f(size_t value, size_t base, char *str, size_t *i)
 {
 	char	*tmp;
 
-	tmp = "0123456789abcdef";
+	tmp = "0123456789ABCDEF";
 	if (value >= base)
 		f(value / base, base, str, i);
 	str[(*i)++] = tmp[(value % base)];
