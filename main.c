@@ -442,17 +442,17 @@ void ft_get_flag(t_print *list, char fm)
         list->flag |= 0x01 << 4;
 }
 
-// void ft_get_size(t_print *list, char fm)
-// {
-//     if (fm == 'l')
-//         list->l++;
-//     else if (fm == 'h')
-//         list->h++;
-//     else if (fm == 'z')
-//         list->z = 1;
-//     else if (fm == 'j')
-//         list->j = 1;
-// }
+void ft_get_size(t_print *list, char fm)
+{
+    if (fm == 'l')
+        list->l++;
+    else if (fm == 'h')
+        list->h++;
+    else if (fm == 'z')
+        list->z = 1;
+    else if (fm == 'j')
+        list->j = 1;
+}
 
 
 #define ARG2 "%.1d"
