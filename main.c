@@ -247,8 +247,7 @@ void ft_get_char(t_print *list, va_list *args)
             (*list->buf) = c;
         }
     }
-    }
-    else if (list->conversion == 'S' || (list->conversion == 's' &&
+    if (list->conversion == 'S' || (list->conversion == 's' &&
                                          (list->l % 2)))
     {
         list->buf = ((wchar = va_arg(*args, wchar_t*)) == NULL) ?
