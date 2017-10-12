@@ -36,6 +36,7 @@ int     ft_if_percent(va_list *args, const char **fm, t_print **list, size_t *re
     }
     return (0);
 }
+ 
 
 size_t  ft_check_fm(va_list *args, const char *fm, size_t ret)
 {
@@ -130,19 +131,19 @@ size_t ft_print_left(t_print *list, size_t ret)
 void ft_print_right_post(t_print *list, size_t *ret)
 {
 ft_putstr(list->prefix);
-ret += ft_strlen(list->prefix);
-ret += list->len_w;
+(*ret) += ft_strlen(list->prefix);
+(*ret) += list->len_w;
 while((list->len_w)--)
 ft_putchar('0');
 if (*list->buf == '0' && SYMB(list->conversion))
 {
-    ret++;
+    (*ret)++;
     ft_putchar('\0');
 }
 else
 {
     ft_putstr(list->buf);
-    ret += ft_strlen(list->buf);
+    (*ret) += ft_strlen(list->buf);
 }
 }
 
@@ -379,7 +380,6 @@ void ft_get_digit(t_print *list, va_list *args)
 
 t_print *ft_new_list(t_print *list)
 {
-  
     if(!(list = (t_print*)ft_memalloc(sizeof(t_print))))
         return(NULL);
     (list)->prefix = ft_strnew(2);
@@ -480,8 +480,8 @@ void ft_get_size(t_print *list, char fm)
 #define ARG33 8
 
 
-#define ARG1 "%.0p"
-#define ARG11 NULL
+#define ARG1 "\t|%012i|"
+#define ARG11 -42
 
 /*
 int main(void)
@@ -515,4 +515,5 @@ int main(void)
 
    return 0;
 }
+
 */
