@@ -247,16 +247,17 @@ void ft_get_char(t_print *list, va_list *args)
             (*list->buf) = c;
         }
     }
-    else if (list->conversion == 's')
-    {
-        list->buf = ((s = va_arg(*args, char*)) == NULL) ?
-        ft_push_char(list, "(null)") : ft_push_char(list, s);
     }
     else if (list->conversion == 'S' || (list->conversion == 's' &&
                                          (list->l % 2)))
     {
         list->buf = ((wchar = va_arg(*args, wchar_t*)) == NULL) ?
         ft_strdup("(null)") : ft_push_wchar(wchar, list);
+    }
+    else if (list->conversion == 's')
+    {
+        list->buf = ((s = va_arg(*args, char*)) == NULL) ?
+        ft_push_char(list, "(null)") : ft_push_char(list, s);
     }
 }
 
