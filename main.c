@@ -207,7 +207,7 @@ void ft_check_prefix(t_print *list)
     return ;
 }
 
-void        f(size_t value, int base, char *str, size_t *i, int upper)
+void        f(size_t value, size_t base, char *str, size_t *i, int upper)
 {
     char    *tmp;
     
@@ -217,7 +217,7 @@ void        f(size_t value, int base, char *str, size_t *i, int upper)
     str[(*i)++] = tmp[(value % base)];
 }
 
-char        *ft_itoa_base(ssize_t value, int base, int upper)
+char        *ft_itoa_base(ssize_t value, size_t base, int upper)
 {
     size_t        i;
     char    *str;
@@ -278,7 +278,7 @@ char *ft_push_char(t_print *list, char *s)
 char *ft_push_wchar(wchar_t *wchar, t_print *list)
 {
     char *str;
-    int len;
+    size_t len;
     
     len = 0;
     str = ft_strnew(0);
@@ -377,10 +377,9 @@ void ft_get_digit(t_print *list, va_list *args)
     list->buf = ft_itoa_base(digit, 10, 0);
 }
 
-t_print *ft_new_list(t_print *lst)
+t_print *ft_new_list(t_print *list)
 {
-    t_print *list;
-    
+  
     if(!(list = (t_print*)ft_memalloc(sizeof(t_print))))
         return(NULL);
     (list)->prefix = ft_strnew(2);
