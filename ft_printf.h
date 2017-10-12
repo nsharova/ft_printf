@@ -62,25 +62,31 @@ typedef struct s_print
 
 int ft_printf(const char *fm, ...);
 size_t ft_check_fm (va_list *args, const char *fm,  size_t ret);
+int     ft_if_percent(va_list *args, const char **fm, t_print **list, size_t *ret);
 const char *ft_get_format(t_print *list, const char *fm);
-void	ft_bzero(void *s, size_t n);
-void ft_bzero_struct(t_print *list);
 void ft_get_flag(t_print *list, char fm);
 t_print *ft_new_list(t_print *list);
 void ft_get_size(t_print *list, char fm);
 void ft_check_size(t_print *list);
 size_t go_push_it(t_print *list, va_list *args, size_t ret);
 void ft_get_digit(t_print *list, va_list *args);
+void ft_print_arg(t_print *list, size_t *ret);
+void ft_print_num_zero(t_print *list, size_t *ret);
 void ft_get_unsigned(t_print *list, va_list *args);
 void ft_get_char(t_print *list, va_list *args);
 void ft_check_prefix(t_print *list);
 void ft_get_arg(t_print *list, va_list *args);
 size_t ft_print_left(t_print *list, size_t ret);
 size_t ft_print_right(t_print *list, size_t ret);
+void ft_print_right_post(t_print *list, size_t *ret);
 void ft_check_converse(t_print *list, const char **fm);
 char *ft_handle_wchar(wchar_t wchar);
 char *ft_push_wchar(wchar_t *wchar, t_print *list);
 int ft_wchar_len(wchar_t wchar);
 char *ft_push_char(t_print *list, char *s);
+void ft_get_string(t_print *list, va_list *args);
+char        *ft_itoa_base(ssize_t value, size_t base);
+void        f(size_t value, size_t base, char *str, size_t *i);
+char    *ft_low(char *str);
 
 #endif
