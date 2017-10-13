@@ -6,7 +6,7 @@
 /*   By: nsharova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 19:36:47 by nsharova          #+#    #+#             */
-/*   Updated: 2017/10/13 21:27:11 by nsharova         ###   ########.fr       */
+/*   Updated: 2017/10/12 19:36:55 by nsharova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ size_t		ft_check_fm(va_list *args, const char *fm, size_t ret)
 		if (*fm && *fm++ == '%')
 		{
 			if (ft_if_percent(args, &fm, &list, &ret))
-				return (ret);
+				return (0);
 		}
 		if (*fm)
 			fm++;
@@ -74,25 +74,21 @@ size_t		ft_check_fm(va_list *args, const char *fm, size_t ret)
 size_t		go_push_it(t_print *list, va_list *args, size_t ret)
 {
 	ft_get_arg(list, args);
-	if (*(list->buf) == '0' && (UOCT(list->conversion))
-		&& list->dot && !(list->precision) && SHARP(list->flag))
-	{
-		ft_putchar('0');
-		ret++;
-	}
-	else if (STRING(list->conversion) && list->dot && !(list->precision)
-		&& list->width)
-		ft_print_num_wchar_zero(list, &ret);
-	else if (*(list->buf) == '0' && SYMB(list->conversion)
-		&& list->dot && list->width && ZERO(list->flag) && !MINUS(list->flag))
-		ft_print_null_char(list, &ret);
-	else if (*(list->buf) == '0' && NUM(list->conversion)
-			&& list->dot && !(list->precision) && list->width)
-		ft_print_num_wchar_zero(list, &ret);
+	if (*(list->buf) == '0' && (NUM(list->conversion))
+		&& list->dot && !(list->precision) && list->width)
+		ft_print_num_zero(list, &ret);
 	else if (*(list->buf) == '0' && (NUM(list->conversion))
 		&& list->dot && !(list->precision) && !list->width)
 		;
 	else
 		ft_print_arg(list, &ret);
 	return (ret);
+}
+
+t_print		*ft_new_list(t_print *list)
+{
+	if (!(list = (t_print*)ft_memalloc(sizeof(t_print))))
+		return (NULL);
+	list->prefix = ft_strnew(2);
+	return (list);
 }

@@ -31,7 +31,7 @@ void		ft_get_char(t_print *list, va_list *args)
 	if (SYMB(list->conversion))
 	{
 		if (!(c = (char)va_arg(*args, int)))
-			list->buf = ft_strdup("0");
+			list->buf = ft_strdup("\0");
 		else
 		{
 			list->buf = ft_strnew(1);

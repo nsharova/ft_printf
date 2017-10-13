@@ -6,13 +6,13 @@
 /*   By: nsharova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 22:46:31 by nsharova          #+#    #+#             */
-/*   Updated: 2017/10/12 23:03:37 by nsharova         ###   ########.fr       */
+/*   Updated: 2017/10/13 16:00:20 by nsharova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_check_prefix(t_print *list)
+void		ft_check_prefix(t_print *list)
 {
 	if (DECIMAL(list->conversion))
 	{
@@ -33,7 +33,7 @@ void	ft_check_prefix(t_print *list)
 	return ;
 }
 
-void	ft_check_size(t_print *list)
+void		ft_check_size(t_print *list)
 {
 	if (list->z == 1)
 		list->size = 'z';
@@ -53,4 +53,12 @@ void	ft_check_size(t_print *list)
 		else
 			list->size = 'h';
 	}
+}
+
+t_print		*ft_new_list(t_print *list)
+{
+	if (!(list = (t_print*)ft_memalloc(sizeof(t_print))))
+		return (NULL);
+	list->prefix = ft_strnew(2);
+	return (list);
 }

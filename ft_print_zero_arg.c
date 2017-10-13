@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_print_zero_arg.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsharova <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/30 21:50:21 by nsharova          #+#    #+#             */
-/*   Updated: 2016/12/16 20:24:22 by nsharova         ###   ########.fr       */
+/*   Created: 2017/10/13 14:20:37 by nsharova          #+#    #+#             */
+/*   Updated: 2017/10/13 15:58:09 by nsharova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dst, void *src, size_t n)
+void	ft_print_num_wchar_zero(t_print *list, size_t *ret)
 {
-	unsigned char *d;
-	unsigned char *s;
-
-	if (dst == NULL || src == NULL)
-		return (NULL);
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	while (n-- != 0)
+	if (!ZERO(list->flag))
 	{
-		*d++ = *s++;
+		while ((list->width)--)
+		{
+			ft_putchar(' ');
+			(*ret)++;
+		}
 	}
-	return (dst);
+	else
+		while ((list->width)--)
+		{
+			ft_putchar('0');
+			(*ret)++;
+		}
+}
+
+void	ft_print_null_char(t_print *list, size_t *ret)
+{
+	(*ret) += list->width;
+	list->width--;
+	while (list->width--)
+		ft_putchar('0');
+	ft_putchar('\0');
 }

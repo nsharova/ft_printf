@@ -6,7 +6,7 @@
 #    By: nsharova <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/11 00:30:07 by nsharova          #+#    #+#              #
-#    Updated: 2017/10/12 23:02:21 by nsharova         ###   ########.fr        #
+#    Updated: 2017/10/13 19:26:44 by nsharova         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,7 +20,8 @@ SRC = ft_check_format.c \
 		ft_itoa_base.c \
 		ft_print_arg.c \
 		ft_print_wchar.c \
-		ft_printf.c
+		ft_printf.c \
+		ft_print_zero_arg.c
 
 OBJ = $(SRC:.c=.o)
 
